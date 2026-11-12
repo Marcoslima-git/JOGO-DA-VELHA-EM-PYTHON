@@ -5,7 +5,7 @@ executando = True
 
 while executando == True:
     print("\n=== JOGO DA VELHA ===")
-    print("1. Jogar\n2. Ver regras\n3. Ver placar\n4. Sair")
+    print("1. Jogar\n2. Sair (Temporário)")
     opcao = input("Escolha uma opção (1 a 4): ")
 
     if opcao == "1":
@@ -32,19 +32,26 @@ while executando == True:
                     if entrada_c == str(n): coluna_ok, c_idx = True, n - 1
                 if linha_ok == True and coluna_ok == True:
                     if tabuleiro[l_idx][c_idx] == " ": jogada_valida = True
-                    else: print("Casa ocupada! Tente novamente.")
-                else: print("Entrada inválida! Digite apenas números de 1 a 3.")
+                    else: print("Casa ocupada!")
+                else: print("Entrada inválida!")
 
             tabuleiro[l_idx][c_idx] = turno
-
-            # Verificação de vitória com laços for
             venceu = False
-            # Verificando Linhas
             for i in range(3):
-                if tabuleiro[i][0] == turno and tabuleiro[i][1] == turno and tabuleiro[i][2] == turno:
-                    venceu = True
-            # Verificando Colunas
+                if tabuleiro[i][0] == turno and tabuleiro[i][1] == turno and tabuleiro[i][2] == turno: venceu = True
             for j in range(3):
-                if tabuleiro[0][j] == turno and tabuleiro[1][j] == turno and tabuleiro[2][j] == turno:
-                    venceu = True
+                if tabuleiro[0][j] == turno and tabuleiro[1][j] == turno and tabuleiro[2][j] == turno: venceu = True
+            
+            # Verificando Diagonais
+            cont_dp = 0
+            for i in range(3):
+                if tabuleiro[i][i] == turno: cont_dp = cont_dp + 1
+            if cont_dp == 3: venceu = True
+
+            cont_ds = 0
+            for i in range(3):
+                for j in range(3):
+                    if i + j == 2:
+                        if tabuleiro[i][j] == turno: cont_ds = cont_ds + 1
+            if cont_ds == 3: venceu = True
             jogo_ativo = False
