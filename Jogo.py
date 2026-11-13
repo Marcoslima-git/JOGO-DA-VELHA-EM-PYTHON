@@ -55,13 +55,22 @@ while executando == True:
             if venceu == True:
                 print("\nParabéns! O jogador", turno, "venceu!")
                 total_partidas = total_partidas + 1
-                if turno == "X": vitorias_X = vitorias_X + 1
-                else: vitorias_O = vitorias_O + 1
+                if turno == "X":
+                    vitorias_X = vitorias_X + 1
+                    seq_X = seq_X + 1
+                    seq_O = 0
+                    if seq_X > max_seq_X: max_seq_X = seq_X
+                else:
+                    vitorias_O = vitorias_O + 1
+                    seq_O = seq_O + 1
+                    seq_X = 0
+                    if seq_O > max_seq_O: max_seq_O = seq_O
                 jogo_ativo = False
             elif vazias == 0:
                 print("\nDeu empate!")
                 empates = empates + 1
                 total_partidas = total_partidas + 1
+                seq_X, seq_O = 0, 0
                 jogo_ativo = False
             else:
                 if turno == "X": turno = "O"
