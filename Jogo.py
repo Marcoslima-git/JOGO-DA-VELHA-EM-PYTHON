@@ -5,8 +5,8 @@ executando = True
 
 while executando == True:
     print("\n=== JOGO DA VELHA ===")
-    print("1. Jogar\n2. Sair (Temporário)")
-    opcao = input("Escolha uma opção (1 a 4): ")
+    print("1. Jogar\n2. Sair")
+    opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
         for i in range(3):
@@ -20,12 +20,11 @@ while executando == True:
                 linha_str = str(i + 1) + " "
                 for j in range(3): linha_str = linha_str + tabuleiro[i][j] + " "
                 print(linha_str)
-            print("\nVez do jogador", turno)
 
             jogada_valida = False
             while jogada_valida == False:
-                entrada_l = input("Digite a linha (1 a 3): ")
-                entrada_c = input("Digite a coluna (1 a 3): ")
+                entrada_l = input("Linha (1 a 3): ")
+                entrada_c = input("Coluna (1 a 3): ")
                 linha_ok, coluna_ok, l_idx, c_idx = False, False, 0, 0
                 for n in range(1, 4):
                     if entrada_l == str(n): linha_ok, l_idx = True, n - 1
@@ -53,14 +52,17 @@ while executando == True:
                 for j in range(3):
                     if tabuleiro[i][j] == " ": vazias = vazias + 1
 
-            # Checagem de final de rodada
             if venceu == True:
                 print("\nParabéns! O jogador", turno, "venceu!")
+                total_partidas = total_partidas + 1
+                if turno == "X": vitorias_X = vitorias_X + 1
+                else: vitorias_O = vitorias_O + 1
                 jogo_ativo = False
             elif vazias == 0:
                 print("\nDeu empate!")
+                empates = empates + 1
+                total_partidas = total_partidas + 1
                 jogo_ativo = False
             else:
-                # Troca a vez do jogador
                 if turno == "X": turno = "O"
                 else: turno = "X"
