@@ -41,79 +41,26 @@ while executando == True:
                 if tabuleiro[i][0] == turno and tabuleiro[i][1] == turno and tabuleiro[i][2] == turno: venceu = True
             for j in range(3):
                 if tabuleiro[0][j] == turno and tabuleiro[1][j] == turno and tabuleiro[2][j] == turno: venceu = True
-            
-            # Verificando Diagonais
-            cont_dp = 0
+            cont_dp, cont_ds = 0, 0
             for i in range(3):
                 if tabuleiro[i][i] == turno: cont_dp = cont_dp + 1
-            if cont_dp == 3: venceu = True
-
-            cont_ds = 0
-            for i in range(3):
-                for j in range(3):
-                    if i + j == 2:
-                        if tabuleiro[i][j] == turno: cont_ds = cont_ds + 1
-            if cont_ds == 3: venceu = True
-            jogo_ativo = False
-            total_partidas, vitorias_X, vitorias_O, empates = 0, 0, 0, 0
-seq_X, seq_O, max_seq_X, max_seq_O = 0, 0, 0, 0
-tabuleiro = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-executando = True
-
-while executando == True:
-    print("\n=== JOGO DA VELHA ===")
-    print("1. Jogar\n2. Sair (Temporário)")
-    opcao = input("Escolha uma opção (1 a 4): ")
-
-    if opcao == "1":
-        for i in range(3):
-            for j in range(3): tabuleiro[i][j] = " "
-        turno = "X"
-        jogo_ativo = True
-
-        while jogo_ativo == True:
-            print("\n  1 2 3")
-            for i in range(3):
-                linha_str = str(i + 1) + " "
-                for j in range(3): linha_str = linha_str + tabuleiro[i][j] + " "
-                print(linha_str)
-            print("\nVez do jogador", turno)
-
-            jogada_valida = False
-            while jogada_valida == False:
-                entrada_l = input("Digite a linha (1 a 3): ")
-                entrada_c = input("Digite a coluna (1 a 3): ")
-                linha_ok, coluna_ok, l_idx, c_idx = False, False, 0, 0
-                for n in range(1, 4):
-                    if entrada_l == str(n): linha_ok, l_idx = True, n - 1
-                    if entrada_c == str(n): coluna_ok, c_idx = True, n - 1
-                if linha_ok == True and coluna_ok == True:
-                    if tabuleiro[l_idx][c_idx] == " ": jogada_valida = True
-                    else: print("Casa ocupada!")
-                else: print("Entrada inválida!")
-
-            tabuleiro[l_idx][c_idx] = turno
-            venceu = False
-            for i in range(3):
-                if tabuleiro[i][0] == turno and tabuleiro[i][1] == turno and tabuleiro[i][2] == turno: venceu = True
-            for j in range(3):
-                if tabuleiro[0][j] == turno and tabuleiro[1][j] == turno and tabuleiro[2][j] == turno: venceu = True
-            
-            cont_dp = 0
-            for i in range(3):
-                if tabuleiro[i][i] == turno: cont_dp = cont_dp + 1
-            if cont_dp == 3: venceu = True
-
-            cont_ds = 0
-            for i in range(3):
                 for j in range(3):
                     if i + j == 2 and tabuleiro[i][j] == turno: cont_ds = cont_ds + 1
-            if cont_ds == 3: venceu = True
+            if cont_dp == 3 or cont_ds == 3: venceu = True
 
-            # Verificação de empate contando casas vazias (For aninhado)
             vazias = 0
             for i in range(3):
                 for j in range(3):
-                    if tabuleiro[i][j] == " ":
-                        vazias = vazias + 1
-            jogo_ativo = False
+                    if tabuleiro[i][j] == " ": vazias = vazias + 1
+
+            # Checagem de final de rodada
+            if venceu == True:
+                print("\nParabéns! O jogador", turno, "venceu!")
+                jogo_ativo = False
+            elif vazias == 0:
+                print("\nDeu empate!")
+                jogo_ativo = False
+            else:
+                # Troca a vez do jogador
+                if turno == "X": turno = "O"
+                else: turno = "X"
