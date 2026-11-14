@@ -8,18 +8,6 @@ while executando == True:
     print("1. Jogar\n2. Sair")
     opcao = input("Escolha uma opção: ")
 
-    elif opcao == "2":
-        print("\n--- REGRAS ---")
-        print("1. O jogo ocorre num tabuleiro de 3x3.")
-        print("2. Vence quem completar primeiro linha, coluna ou diagonal.")
-        print("3. Se o tabuleiro encher, é empate.")
-
-    elif opcao == "3":
-        print("\n--- PLACAR ACUMULADO ---")
-        print("Vitórias X:", vitorias_X)
-        print("Vitórias O:", vitorias_O)
-        print("Total de empates:", empates)
-
     if opcao == "1":
         for i in range(3):
             for j in range(3): tabuleiro[i][j] = " "
@@ -87,3 +75,23 @@ while executando == True:
             else:
                 if turno == "X": turno = "O"
                 else: turno = "X"
+
+elif opcao == "2":
+        print("\n--- REGRAS ---")
+        print("1. O jogo ocorre num tabuleiro de 3x3.")
+        print("2. Vence quem completar primeiro linha, coluna ou diagonal.")
+        print("3. Se o tabuleiro encher, é empate.")
+
+    elif opcao == "3":
+        print("\n--- PLACAR ACUMULADO ---")
+        print("Vitórias X:", vitorias_X)
+        print("Vitórias O:", vitorias_O)
+        print("Total de empates:", empates)
+
+elif opcao == "4":
+        print("\n=== ESTATÍSTICAS FINAIS DA SESSÃO ===")
+        print("Total de partidas jogadas:", total_partidas)
+        print("Vitórias X:", vitorias_X)
+        print("Vitórias O:", vitorias_O)
+        print("Empates:", empates)
+        executando = False
