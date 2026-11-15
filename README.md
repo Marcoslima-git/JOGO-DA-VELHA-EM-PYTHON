@@ -9,6 +9,6 @@ Jogo da velha executado via terminal, programado em Python utilizando conceitos 
 - Desafio lógico implementado: Cálculo e exibição da **maior sequência de vitórias** de cada jogador e cálculo de porcentagens[cite: 9].
 
 ## 👥 Equipe
-- Aluno 1: Estrutura da matriz, validações de usuário e registros base.
-- Aluno 2: Lógica de verificação de vitória (linhas, colunas, diagonais).
-- Aluno 3: Lógica de empate, turnos e desafio lógico (Estatísticas e porcentagem).
+- Marcos Vinícius: Estrutura da matriz, validações de usuário e registros base.
+- Matheus Ferreira: Lógica de verificação de vitória (linhas, colunas, diagonais).
+- Gilvan Gervásio: Lógica de empate, turnos e desafio lógico (Estatísticas e porcentagem).
