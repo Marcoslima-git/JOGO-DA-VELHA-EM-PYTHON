@@ -1,2 +1,14 @@
-# JOGO-DA-VELHA-EM-PYTHON
-Jogo da Velha via terminal em Python utilizando matrizes 3x3 e for aninhado. Trabalho acadêmico desenvolvido para a disciplina de Coding (UNINASSAU)
+# Jogo da Velha (Tic-Tac-Toe) em Python
+
+## 🎮 Sobre o Projeto
+Jogo da velha executado via terminal, programado em Python utilizando conceitos como laço `while`, laços `for` aninhados e matrizes (listas de listas).
+
+**Funcionalidades:**
+- Matriz interativa validada contra quebras (anti-crash)
+- Verificação automática de vitória (linhas, colunas e diagonais) ou empate com base em for aninhado.
+- Desafio lógico implementado: Cálculo e exibição da **maior sequência de vitórias** de cada jogador e cálculo de porcentagens[cite: 9].
+
+## 👥 Equipe
+- Aluno 1: Estrutura da matriz, validações de usuário e registros base.
+- Aluno 2: Lógica de verificação de vitória (linhas, colunas, diagonais).
+- Aluno 3: Lógica de empate, turnos e desafio lógico (Estatísticas e porcentagem).
